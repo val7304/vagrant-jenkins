@@ -8,13 +8,11 @@ Vagrant.configure("2") do |config|
   config.vm.network "private_network", ip: "192.168.56.10"
   config.vm.synced_folder ".", "/vagrant"
   
-  # Provision avec Ansible local
+  # Provision Ansible_local
   config.vm.provision "ansible_local" do |ansible|
     ansible.playbook = "/vagrant/ansible/install_jenkins.yml"
-    #ansible.inventory_path = "/vagrant/ansible/inventory"
   end
 
-  # Augmenter la RAM si besoin
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "2048"
     vb.cpus = 2
